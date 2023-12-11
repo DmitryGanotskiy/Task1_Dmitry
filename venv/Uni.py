@@ -1,11 +1,13 @@
 from tkinter import *
-from tkPDFViewer import tkPDFViewer as pdf 
 
 class Uni:
     def __init__(self, tk):
         self.root = tk
         self.courses = []
         self.marks = []
+        self.canvasMark = None
+        self.canvasTable = None
+        self.frame = None
 
     def Table(self):
         self.canvasTable = Canvas(self.root.tk, height=300, width=400, bg="black")
@@ -60,5 +62,10 @@ class Uni:
 
         Button(self.root.tk, text="Edit", width="5", bg="gray", command=self._EditStudents).place(x=340, y=400)
 
-    def Docs(self):
-        pass
+    def Delete(self):
+        self.root.students.clear()
+        self.courses.clear()
+        self.marks.clear()
+        if self.canvasMark is not None: self.canvasMark.destroy()
+        if self.canvasTable is not None: self.canvasTable.destroy()
+        if self.frame: self.frame.destroy()

@@ -30,7 +30,7 @@ class Tkinter:
         Button(self.tk, text="Average", width="5", bg="gray", command=self.uni.Average).place(x=350, y=70)
         Button(self.tk, text="Table", width="5", bg="gray", command=self.uni.Table).place(x=460, y=70)
         Button(self.tk, text="Edit", width="5", bg="gray", command=self.uni.Edit).place(x=580, y=70)
-        Button(self.tk, text="Docs", width="5", bg="gray", command=self.uni.Docs).place(x=680, y=70)
+        Button(self.tk, text="Delete", width="5", bg="gray", command=self.uni.Delete).place(x=680, y=70)
 
     def AddEntry(self):
         course = Entry(self.tk, width=20, fg='black', font=('Arial', 10))
@@ -45,6 +45,13 @@ class Tkinter:
         for i in range(len(self.entries)):
                if self.entries[i] != "":
                    self.students.append(Student(self.entries[i].get(), self.marks[i].get()))
+        for i in self.entries:
+            i.destroy()
+        for i in self.marks:
+            i.destroy()
+
+        self.entries.clear()
+        self.marks.clear()
 
     def run(self):
         self.tk.mainloop()

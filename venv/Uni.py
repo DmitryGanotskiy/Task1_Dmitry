@@ -9,6 +9,7 @@ class Uni:
         self.canvasTable = None
         self.frame = None
 
+#print a table of students marks and courses
     def Table(self):
         self.canvasTable = Canvas(self.root.tk, height=300, width=400, bg="black")
         self.canvasTable.place(x=340, y=100)
@@ -26,6 +27,7 @@ class Uni:
             self.canvasTable.create_text(220, 30 * (i + 2), text=student.course, fill="white")
             self.canvasTable.create_text(370, 30 * (i + 2), text=str(student.mark), fill="white")
 
+#print an average mark
     def Average(self):
         self.canvasMark = Canvas(self.root.tk, height=300, width=400, bg="black")
         self.canvasMark.place(x=340, y=100)
@@ -35,6 +37,7 @@ class Uni:
             self.canvasMark.create_text(200, 150, text=f"Average Mark: {average_mark}", fill="white")
         else: self.canvasMark.create_text(200, 150, text="Minimum two students", fill="white")
 
+#private function to edit students
     def _EditStudents(self):
         for i in range(len(self.courses)):
             if self.courses[i] != "":
@@ -45,6 +48,7 @@ class Uni:
             self.courses.clear()
             self.marks.clear()
 
+#creates table for student to change its data
     def Edit(self):
         self.frame = Frame(self.root.tk)
         self.frame.place(x=340, y=100)
@@ -62,6 +66,7 @@ class Uni:
 
         Button(self.root.tk, text="Edit", width="5", bg="gray", command=self._EditStudents).place(x=340, y=400)
 
+#delete all the data
     def Delete(self):
         self.root.students.clear()
         self.courses.clear()
@@ -69,3 +74,4 @@ class Uni:
         if self.canvasMark is not None: self.canvasMark.destroy()
         if self.canvasTable is not None: self.canvasTable.destroy()
         if self.frame: self.frame.destroy()
+        
